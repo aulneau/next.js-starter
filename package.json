@@ -1,0 +1,92 @@
+{
+  "name": "micro-github-latest",
+  "version": "0.0.1",
+  "description": "My flavor of next.js.",
+  "license": "MIT",
+  "repository": "aulneau/next.js-starter",
+  "author": "Thomas Osmonson <hello@ineffable.co>",
+  "bugs": {
+    "url": "https://github.com/aulneau/next.js-starter/issues",
+    "email": "hello@ineffable.co"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "node server",
+    "build": "next build src",
+    "start": "NODE_ENV=production node server/index.js",
+    "export": "next export src",
+    "deploy":
+      "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploying to gh-pages\" && git subtree push --prefix out origin gh-pages"
+  },
+  "now": {
+    "alias": "next.js-starter",
+    "type": "npm",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb",
+      "prettier",
+      "prettier/flowtype",
+      "prettier/react",
+      "plugin:jest/recommended"
+    ],
+    "plugins": ["prettier", "jest"],
+    "env": {
+      "jest/globals": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [".js"]
+        }
+      ],
+      "import/no-extraneous-dependencies": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "react/forbid-prop-types": 0,
+      "react/require-default-props": 0,
+      "prettier/prettier": "error"
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "eslint": "^4.7.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.5.0",
+    "eslint-plugin-flowtype": "^2.35.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.1.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.3.0",
+    "jest": "^21.1.0",
+    "prettier": "^1.7.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.0.0-beta.38",
+    "@babel/core": "^7.0.0-beta.38",
+    "@babel/node": "^7.0.0-beta.38",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-styled-components": "^1.5.0",
+    "babel-plugin-transform-define": "^1.3.0",
+    "express": "^4.16.2",
+    "lru-cache": "^4.1.1",
+    "morgan": "^1.9.0",
+    "next": "^4.4.0-canary.3",
+    "nodemon": "^1.14.11",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "shrink-ray": "^0.1.3",
+    "styled-components": "^3.0.2"
+  }
+}
